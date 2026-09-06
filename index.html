@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thakur Piyush Singh - Wikipedia Portfolio</title>
+    <style>
+        /* ==========================================================================
+           1. General Page Styling
+           ========================================================================== */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Lato, Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            color: #202122;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #36c;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* ==========================================================================
+           2. Header / Top Navigation Bar
+           ========================================================================== */
+        .wiki-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 24px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #a2a9b1;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .menu-icon {
+            font-size: 20px;
+            cursor: pointer;
+            color: #54595d;
+        }
+
+        .wiki-logo {
+            font-family: 'Linux Libertine', 'Georgia', serif;
+            font-weight: bold;
+            font-size: 20px;
+            letter-spacing: 0.5px;
+            color: #000;
+        }
+
+        .wiki-subtext {
+            display: block;
+            font-size: 11px;
+            color: #54595d;
+        }
+
+        /* Search Bar */
+        .search-container {
+            display: flex;
+            flex-grow: 0.4;
+            max-width: 500px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #a2a9b1;
+            border-radius: 2px 0 0 2px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .search-input:focus {
+            border-color: #36c;
+        }
+
+        .search-btn {
+            padding: 8px 16px;
+            background-color: #f8f9fa;
+            border: 1px solid #a2a9b1;
+            border-left: none;
+            cursor: pointer;
+            border-radius: 0 2px 2px 0;
+            font-weight: bold;
+            color: #202122;
+        }
+
+        .search-btn:hover {
+            background-color: #f0f0f0;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 14px;
+        }
+
+        /* ==========================================================================
+           3. Main Structural Layout
+           ========================================================================== */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 25px 20px;
+        }
+
+        .article-title {
+            font-family: 'Linux Libertine', 'Georgia', Times, serif;
+            font-size: 36px;
+            font-weight: normal;
+            margin: 0 0 5px 0;
+            border-bottom: none;
+        }
+
+        .title-divider {
+            border: 0;
+            border-top: 1px solid #a2a9b1;
+            margin-bottom: 20px;
+        }
+
+        .disambiguation {
+            font-style: italic;
+            font-size: 13px;
+            color: #54595d;
+            margin-bottom: 18px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #eaecf0;
+        }
+
+        /* Content Layout */
+        .article-body {
+            display: flex;
+            gap: 28px;
+            align-items: flex-start;
+        }
+
+        .text-side {
+            flex: 1;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        h2 {
+            font-family: 'Linux Libertine', 'Georgia', Times, serif;
+            font-size: 24px;
+            font-weight: normal;
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 4px;
+            margin-top: 35px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 16px;
+        }
+
+        /* Figure / In-text Image Styling */
+        .inline-figure {
+            float: right;
+            margin: 10px 0 15px 20px;
+            border: 1px solid #c8ccd1;
+            background-color: #f8f9fa;
+            padding: 4px;
+            max-width: 240px;
+        }
+
+        .inline-figure.left {
+            float: left;
+            margin: 10px 20px 15px 0;
+        }
+
+        .inline-figure img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .inline-figure figcaption {
+            font-size: 12px;
+            color: #54595d;
+            padding: 6px 4px 2px 4px;
+            line-height: 1.3;
+        }
+
+        /* Clean clearing for floats */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* ==========================================================================
+           4. Player Infobox Card Structure
+           ========================================================================== */
+        .infobox {
+            width: 300px;
+            border: 1px solid #a2a9b1;
+            background-color: #f8f9fa;
+            padding: 8px;
+            font-size: 13px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            flex-shrink: 0;
+        }
+
+        .infobox-title {
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 6px 0;
+            background-color: #eaecf0;
+            border: 1px solid #a2a9b1;
+            margin-bottom: 8px;
+            font-family: sans-serif;
+        }
+
+        .infobox-image-container {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .infobox-image {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border: 1px solid #c8ccd1;
+        }
+
+        .image-caption {
+            text-align: center;
+            font-size: 12px;
+            color: #54595d;
+            margin: 6px 0 10px 0;
+        }
+
+        .infobox-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table-section-head {
+            background-color: #eaecf0;
+            text-align: center;
+            padding: 5px;
+            font-weight: bold;
+            border: 1px solid #a2a9b1;
+        }
+
+        .infobox-table th, .infobox-table td {
+            padding: 6px 8px;
+            text-align: left;
+            vertical-align: top;
+            border-bottom: 1px solid #eaecf0;
+        }
+
+        .infobox-table th {
+            width: 35%;
+            font-weight: bold;
+            color: #202122;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 850px) {
+            .article-body {
+                flex-direction: column-reverse;
+            }
+            .infobox {
+                width: 100%;
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+            .inline-figure, .inline-figure.left {
+                float: none;
+                max-width: 100%;
+                margin: 15px 0;
+            }
+            .search-container {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="wiki-header">
+        <div class="header-left">
+            <span class="menu-icon" title="Main menu">&#9776;</span>
+            <div class="logo-area">
+                <span class="wiki-logo">WIKIPEDIA</span>
+                <span class="wiki-subtext">The Free Encyclopedia</span>
+            </div>
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Search Wikipedia" class="search-input">
+            <button class="search-btn">Search</button>
+        </div>
+        <div class="header-right">
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <div class="main-container">
+        
+        <main class="article-content">
+            <h1 class="article-title"><i>Thakur Piyush Singh...</h1></i>
+            <hr class="title-divider">
+            
+            <div class="disambiguation">
+                This article is about the Indian web designer and developer. For other uses, see Thakur Piyush Singh (disambiguation).
+            </div>
+
+            <div class="article-body clearfix">
+                
+                <!-- Main Article Text -->
+                <div class="text-side">
+                    
+                    <p>
+                        <strong><i>Thakur Piyush Singh...</i></strong> is an ambitious Indian web designer and frontend specialist dedicated to building clean, high-performance digital environments. Combining structural precision with design, he excels at writing semantic, standard-compliant code. Singh bridges creative vision with complex computer programming architecture, building interactive platforms optimizing user experiences across viewports.
+                    </p>
+
+                    <!-- Embedded Figure Right -->
+                    <figure class="inline-figure">
+                       
+                        <figcaption>Singh developing modern web applications (2026).</figcaption>
+                    </figure>
+
+                    <p>
+                        His meticulous layouts utilize cutting-edge methodologies including Flexbox configurations and responsive design principles. Passionate about software engineering, Singh continuously refines his technical systems to keep pace with modern layout practices. He focuses on deploying clean code frameworks, creating impactful websites that establish a professional engineering benchmark.
+                    </p>
+                    
+                    <h2>Understanding Modern Coding Practices</h2>
+                    
+                    <p>
+                        Coding serves as the modern backbone of digital ecosystems, transforming abstract human logic into functional, automated system architecture. At its root, writing code means communicating with processing cores to systematically display data, compute processes, and engineer interactivity across digital environments. In frontend design, this relies on structural layers like HTML5, visual layout models like CSS3, and dynamic computing modules through JavaScript scripts.
+                    </p>
+
+                    <!-- Embedded Figure Left -->
+                    <figure class="inline-figure left">
+                      
+                        <figcaption>System architecture and layout styling flow.</figcaption>
+                    </figure>
+
+                    <p>
+                        Building clean configurations ensures seamless processing across client machines, rendering websites efficiently. Professional frontend engineering emphasizes accessibility, performance tuning, and cross-platform standard synchronization to build optimal user frameworks globally.
+                    </p>
+                    
+                    <p>
+                        Semantic markup structural strategies define high-quality software programming. Utilizing descriptive elements like headers, articles, and navigation blocks optimizes accessibility platforms and search index algorithms simultaneously. Beyond baseline markup, style layout engines govern digital aesthetics. Modern responsive frameworks rely heavily on advanced tools like CSS Flexbox and CSS Grid modules, enabling developers to build dynamic grids that scale fluidly from small mobile panels to massive desktop arrangements. Writing clean rules involves reducing repetitive directives, embracing modular classes, and minimizing structural clutter. This deliberate discipline enhances loading speeds, rendering components effortlessly across edge devices.
+                    </p>
+                    
+                    <p>
+                        Beyond frontend visual styling, coding demands systematic logic workflows. Programmers implement variables, functions, conditional blocks, and object-oriented loops to build complex user interactions.
+                    </p>
+
+                    <!-- Embedded Figure Right -->
+                    <figure class="inline-figure">
+                        
+                        <figcaption>Source repository and engineering pipelines.</figcaption>
+                    </figure>
+
+                    <p>
+                        Writing maintainable architectures requires adhering to rigorous industry conventions, keeping source repositories accessible for engineering collaborations. Developers utilize version management utilities like Git, allowing distributed project teams to modify shared repositories while maintaining main release stability. This infrastructure allows safe, iterative updates, keeping live digital deployments functional. Comprehensive tracking helps teams rapidly debug systems and continually test code updates without disturbing existing software operations.
+                    </p>
+                    
+                    <p>
+                        Modern development ecosystems rely on sophisticated compilers, automated build tools, and integrated development software suites to streamline production. Linting tools run background syntax verification, tracking formatting anomalies before production compilation begins. Minification tools compress stylesheets and scripts, removing whitespaces to improve client download performance across cellular connections. Additionally, modern engineering structures prioritize robust application security protocols, incorporating safe sanitization parameters to shield front-end components against digital scripting attacks. Prioritizing performance profiles alongside structural integrity protects sensitive transaction pipelines across active data endpoints globally.
+                    </p>
+
+                    <p>
+                        Ultimately, coding is an ongoing journey of adaptive learning and engineering precision. As processing frameworks, server methodologies, and responsive styling requirements advance, developers must continuously learn new frameworks, APIs, and modern standards. Mastering software engineering requires balancing clean technical execution with intuitive creative strategy. Programmers write code that solves immediate design issues while maintaining structural modularity for upcoming features. This dedication to excellent programming transforms code bases into resilient, future-ready business platforms, empowering engineers to build next-generation applications that redefine global digital computing capabilities.
+                    </p>
+                </div>
+
+                <!-- Infobox Sidebar -->
+                <aside class="infobox">
+                    <div class="infobox-title">Thakur Piyush Singh</div>
+                    <div class="infobox-image-container">
+                        <img src="p9.jpg" alt="Thakur Piyush Singh" class="infobox-image">
+                        <p class="image-caption">Singh in 2026</p>
+                    </div>
+                    <table class="infobox-table">
+                        <tr>
+                            <th colspan="2" class="table-section-head">Personal information</th>
+                        </tr>
+                        <tr>
+                            <th>Born</th>
+                            <td><a href="#">India</a></td>
+                        </tr>
+                        <tr>
+                            <th>Occupation</th>
+                            <td>Web Designer &amp; Frontend Developer</td>
+                        </tr>
+                        <tr>
+                            <th>Specialization</th>
+                            <td>HTML5, CSS Flexbox, UI Design</td>
+                        </tr>
+                    </table>
+                </aside>
+
+            </div>
+        </main>
+    </div>
+</body>
+</html>
